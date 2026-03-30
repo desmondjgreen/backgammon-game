@@ -1,15 +1,1 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Backgammon Game</title>
-</head>
-<body>
-    <div id="board"></div>
-    <script src="dice.js"></script>
-    <script src="board.js"></script>
-    <script src="game.js"></script>
-</body>
-</html>
+<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Backgammon Game</title>\n    <style>\n        body { font-family: Arial, sans-serif; }\n        #board { display: grid; grid-template-columns: repeat(10, 50px); grid-template-rows: repeat(10, 50px); }\n        .point { width: 50px; height: 50px; border: 1px solid #000; position: relative; }\n        .piece { width: 40px; height: 40px; border-radius: 20px; position: absolute; }\n        .die { font-size: 24px; margin: 10px; }\n        #controls { margin-top: 20px; }\n    </style>\n</head>\n<body>\n    <h1>Backgammon</h1>\n    <div id=\"board\"></div>\n    <div id=\"controls\">\n        <button id=\"rollDice\">Roll Dice</button>\n        <div class=\"die\" id=\"die1\">Die 1: 0</div>\n        <div class=\"die\" id=\"die2\">Die 2: 0</div>\n        <div id=\"status\">Turn: Player 1</div>\n    </div>\n    <script>\n        const board = document.getElementById('board');\n        const die1Display = document.getElementById('die1');\n        const die2Display = document.getElementById('die2');\n        const statusDisplay = document.getElementById('status');\n\n        let playerTurn = 1;\n        let dice = [0, 0];\n\n        function createBoard() {\n            for (let i = 0; i < 10; i++) {\n                for (let j = 0; j < 10; j++) {\n                    const point = document.createElement('div');\n                    point.classList.add('point');\n                    point.dataset.position = (i * 10) + j;\n                    board.appendChild(point);\n                }\n            }\n        }\n\n        function rollDice() {\n            dice[0] = Math.floor(Math.random() * 6) + 1;\n            dice[1] = Math.floor(Math.random() * 6) + 1;\n            die1Display.innerText = 'Die 1: ' + dice[0];\n            die2Display.innerText = 'Die 2: ' + dice[1];\n            nextPlayer();\n        }\n\n        function nextPlayer() {\n            playerTurn = playerTurn === 1 ? 2 : 1;\n            statusDisplay.innerText = 'Turn: Player ' + playerTurn;\n        }\n\n        document.getElementById('rollDice').addEventListener('click', rollDice);\n\n        createBoard();\n    <\/script>\n</body>\n</html>\n
