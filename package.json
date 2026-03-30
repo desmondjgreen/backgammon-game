@@ -1,0 +1,1 @@
+{"name": "backgammon-game","version": "1.0.0","description": "A simple backgammon game implementation.","main": "index.js","scripts": {"test": "echo 'Error: no test specified' && exit 1"},"keywords": ["backgammon","game","board game"],"author": "desmondjgreen","license": "ISC"}
